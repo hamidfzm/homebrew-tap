@@ -14,6 +14,12 @@ cask "glyph" do
 
   app "Glyph.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Glyph.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Application Support/com.hamidfzm.glyph",
     "~/Library/Caches/com.hamidfzm.glyph",
